@@ -253,6 +253,7 @@ PalletTown_Movement_OakEnterLeft::
 	walk_right
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 PalletTown_Movement_OakEnterRight::
@@ -265,10 +266,12 @@ PalletTown_Movement_OakEnterRight::
 	walk_right
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 	.macro walk_to_lab
 	walk_left
+	walk_down
 	walk_down
 	walk_down
 	walk_down
