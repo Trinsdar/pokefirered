@@ -2,13 +2,21 @@ PalletTown_Text_OakDontGoOut::
     .string "OAK: Hey! Wait!\n"
     .string "Don't go out!$"
 
+PalletTown_Text_OakGrassWasClose::
+    .string "OAK: That was close\n"
+    .string "Wild POKéMON live in tall grass!$"
+
+
 PalletTown_Text_OakGrassUnsafeNeedMon::
-    .string "OAK: It's unsafe!\n"
-    .string "Wild POKéMON live in tall grass!\p"
+    .string "Oak: A POKéMON can appear anytime\n"
+    .string "in tall grass.\p"
     .string "You need your own POKéMON for\n"
     .string "your protection.\p"
     .string "I know!\n"
     .string "Here, come with me!$"
+
+PalletTown_Text_OakGrassAfterCatch::
+    .string "Whew...$"
 
 PalletTown_Text_RaisingMonsToo::
     .string "I'm raising POKéMON, too.\p"

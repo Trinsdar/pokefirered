@@ -200,8 +200,16 @@ PalletTown_EventScript_OakTrigger::
 	call_if_eq VAR_TEMP_1, 0, PalletTown_EventScript_OakEnterLeft
 	call_if_eq VAR_TEMP_1, 1, PalletTown_EventScript_OakEnterRight
 	delay 30
-	msgbox PalletTown_Text_OakGrassUnsafeNeedMon
+	msgbox PalletTown_Text_OakGrassWasClose
 	closemessage
+	call_if_eq VAR_TEMP_1, 0, PalletTown_EventScript_OakCatchPokemonLeft
+    call_if_eq VAR_TEMP_1, 1, PalletTown_EventScript_OakCatchPokemonRight
+	playse SE_PIN
+	msgbox PalletTown_Text_OakGrassAfterCatch
+    closemessage
+    applymovement LOCALID_PROF_OAK PalletTown_Movement_OakFaceUp
+	msgbox PalletTown_Text_OakGrassUnsafeNeedMon
+    closemessage
 	delay 30
 	call_if_eq VAR_TEMP_1, 0, PalletTown_EventScript_OakLeadPlayerToLabLeft
 	call_if_eq VAR_TEMP_1, 1, PalletTown_EventScript_OakLeadPlayerToLabRight
@@ -232,6 +240,23 @@ PalletTown_EventScript_OakEnterRight::
 	waitmovement 0
 	return
 
+PalletTown_EventScript_OakCatchPokemonLeft::
+	applymovement LOCALID_PROF_OAK PalletTown_Movement_OakFaceRight
+	call PalletTown_EventScript_OakCatchPokemon
+	return
+
+PalletTown_EventScript_OakCatchPokemonRight::
+	applymovement LOCALID_PROF_OAK PalletTown_Movement_OakFaceLeft
+	call PalletTown_EventScript_OakCatchPokemon
+	return
+
+PalletTown_EventScript_OakCatchPokemon::
+	lock
+	special StartOakPikachuBattle
+	waitstate
+	release
+	return
+
 PalletTown_EventScript_OakLeadPlayerToLabLeft::
 	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakWalkToLabLeft
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerWalkToLabLeft
@@ -243,6 +268,18 @@ PalletTown_EventScript_OakLeadPlayerToLabRight::
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerWalkToLabRight
 	waitmovement 0
 	return
+
+PalletTown_Movement_OakFaceLeft::
+    face_left
+    step_end
+
+PalletTown_Movement_OakFaceRight::
+    face_right
+    step_end
+
+PalletTown_Movement_OakFaceUp::
+    face_up
+    step_end
 
 PalletTown_Movement_OakEnterLeft::
 	walk_up

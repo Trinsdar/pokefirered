@@ -306,6 +306,15 @@ void StartOldManTutorialBattle(void)
     CreateBattleStartTask(B_TRANSITION_SLICE, 0);
 }
 
+void StartOakPikachuBattle(void)
+{
+    CreateMaleMon(&gEnemyParty[0], SPECIES_PIKACHU, 5);
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
+    gBattleTypeFlags = BATTLE_TYPE_OAK_PIKACHU;
+    CreateBattleStartTask(B_TRANSITION_SLICE, 0);
+}
+
 void StartScriptedWildBattle(void)
 {
     LockPlayerFieldControls();
